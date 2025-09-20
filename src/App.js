@@ -6,11 +6,13 @@ function Square({value, onSquareClick}) {
 
 export default function Board() {
   const [squares, setSquares] = useState(Array(9).fill(null));
+  const [xIsNext, setXIsNext] = useState(true);
 
   function handleClick(i) {
-    const nextSquares = squares.slice();
-    nextSquares[i] = "X";
+    const nextSquares = squares.slice(); //Immutability
+    nextSquares[i] = xIsNext?"X":"O";
     setSquares(nextSquares);
+    setXIsNext(!xIsNext);
   }
 
   return (
